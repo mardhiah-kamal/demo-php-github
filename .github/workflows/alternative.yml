@@ -41,7 +41,7 @@ jobs:
       - name: Pull Latest Code in Deployment Directory
         shell: powershell
         run: |
-          $deployDir = "C:\RajWork\2026\ESLearning\github\htp-deployment\demo-php-github"
+          $deployDir = "C:\MarPunyaWork\Github\htp-deployment\demo-php-github"
 
           if (-not (Test-Path $deployDir)) {
               throw "Deployment directory not found: $deployDir. Clone the repo there first."
@@ -69,13 +69,13 @@ jobs:
 
       - name: Install Composer Dependencies (Deployment)
         shell: powershell
-        working-directory: C:\RajWork\2026\ESLearning\github\htp-deployment\demo-php-github
+        working-directory: C:\MarPunyaWork\Github\htp-deployment\demo-php-github
         run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Smoke Test Deployment
         shell: powershell
         run: |
-          $deployDir = "C:\RajWork\2026\ESLearning\github\htp-deployment\demo-php-github\src"
+          $deployDir = "C:\MarPunyaWork\Github\htp-deployment\demo-php-github\src"
           if (-not (Test-Path (Join-Path $deployDir "index.php"))) {
               throw "index.php missing in deployed src folder"
           }
@@ -89,8 +89,8 @@ jobs:
         run: |
           Write-Host "Deployment complete"
           Write-Host "Commit: ${{ github.sha }}"
-          Write-Host "Deployed to: C:\RajWork\2026\ESLearning\github\htp-deployment\demo-php-github"
+          Write-Host "Deployed to: C:\MarPunyaWork\Github\htp-deployment\demo-php-github"
           Write-Host ""
           Write-Host "To run the app:"
-          Write-Host "  cd C:\RajWork\2026\ESLearning\github\htp-deployment\demo-php-github\src"
+          Write-Host "  cd C:\MarPunyaWork\Github\htp-deployment\demo-php-github\src"
           Write-Host "  php -S localhost:8118"
